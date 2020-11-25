@@ -46,6 +46,7 @@ const Home = () => {
 					);
 					const data = await response.json();
 					const { results } = data;
+					console.log(data);
 					if (results) {
 						const newMovies = results.map((movie) => {
 							const {

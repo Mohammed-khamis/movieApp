@@ -22,8 +22,15 @@ const SingleMovie = () => {
 						vote_average: rating,
 						popularity,
 						genres,
+						runtime: duration,
+						vote_count: numberOfRatings,
+						spoken_languages: languages,
 					} = data;
 					const genre = genres.map((item) => {
+						return item.name;
+					});
+
+					const language = languages.map((item) => {
 						return item.name;
 					});
 
@@ -34,6 +41,9 @@ const SingleMovie = () => {
 						rating,
 						popularity,
 						genre,
+						duration,
+						numberOfRatings,
+						language,
 					};
 					setMovie(newMovie);
 				} else {
@@ -53,7 +63,17 @@ const SingleMovie = () => {
 	if (!movie) {
 		return <h2 className="section-title">No Movie To Display</h2>;
 	} else {
-		const { title, image, overview, rating, popularity, genre } = movie;
+		const {
+			title,
+			image,
+			overview,
+			rating,
+			popularity,
+			genre,
+			duration,
+			numberOfRatings,
+			language,
+		} = movie;
 		return (
 			<section className="section movie-section">
 				<h2 className="section-title">{title}</h2>
@@ -66,10 +86,18 @@ const SingleMovie = () => {
 							{overview}
 						</p>
 						<p>rating: {rating}</p>
+						<p>Number Of People Rating: {numberOfRatings}</p>
+						<p>duration: {duration} mins</p>
 						<p>popularity: {popularity}</p>
 						<p>
-							genre:{' '}
+							Genre: &nbsp;
 							{genre.map((item, index) => {
+								return item ? <span key={index}>{item}</span> : null;
+							})}
+						</p>
+						<p>
+							Languages: &nbsp;
+							{language.map((item, index) => {
 								return item ? <span key={index}>{item}</span> : null;
 							})}
 						</p>
