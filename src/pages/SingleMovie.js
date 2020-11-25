@@ -25,6 +25,7 @@ const SingleMovie = () => {
 						runtime: duration,
 						vote_count: numberOfRatings,
 						spoken_languages: languages,
+						release_date: date,
 					} = data;
 					const genre = genres.map((item) => {
 						return item.name;
@@ -44,6 +45,7 @@ const SingleMovie = () => {
 						duration,
 						numberOfRatings,
 						language,
+						date,
 					};
 					setMovie(newMovie);
 				} else {
@@ -73,6 +75,7 @@ const SingleMovie = () => {
 			duration,
 			numberOfRatings,
 			language,
+			date,
 		} = movie;
 		return (
 			<section className="section movie-section">
@@ -81,6 +84,7 @@ const SingleMovie = () => {
 					<img src={`https://image.tmdb.org/t/p/w500${image}`} alt={title} />
 					<div className="film-info">
 						<p>title: {title}</p>
+						<p>Date: {date}</p>
 						<p>
 							overview: <br />
 							{overview}
@@ -106,6 +110,7 @@ const SingleMovie = () => {
 				<Link to="/" className="btn btn-primary">
 					Back Home
 				</Link>
+				<button className="btn btn-primary"> Add to favorite </button>
 			</section>
 		);
 	}

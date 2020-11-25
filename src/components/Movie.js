@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Movie = ({ image, title, id, overview, popularity, rating }) => {
+const Movie = ({ image, title, id, overview, popularity, rating, date }) => {
 	return (
 		<article className="movie">
 			<div className="image-container">
@@ -9,8 +9,8 @@ const Movie = ({ image, title, id, overview, popularity, rating }) => {
 			</div>
 			<div className="movie-footer">
 				<h3>{title}</h3>
-				<h4>rating: {rating}</h4>
-				<p>popularity: {popularity}</p>
+				<h4>Rating: {rating}</h4>
+				<p>Date: {date}</p>
 				<Link to={`/movie/${id}`} className="btn btn-primary btn-details">
 					details
 				</Link>

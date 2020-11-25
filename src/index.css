@@ -106,6 +106,7 @@ Buttons
 	background: transparent;
 	border-radius: var(--mainBorderRadius);
 	display: inline-block;
+	margin-top: 20px;
 }
 .btn:hover {
 	background: var(--primaryColor);
@@ -142,6 +143,16 @@ Buttons
 .btn-details:hover {
 	background: var(--primaryLightColor);
 	border-color: var(--primaryLightColor);
+}
+
+button {
+	margin-left: 20px;
+}
+
+.button {
+	display: flex;
+	justify-content: space-around;
+	margin-bottom: 20px;
 }
 /* 
 ====== 
@@ -187,21 +198,7 @@ Navbar
 	height: 70px;
 	margin-top: 5px;
 }
-/* 
-====== 
-About
-======
-*/
-.about-section {
-	width: var(--smallWidth);
-	max-width: var(--maxWidth);
-	margin: 0 auto;
-}
-.about-section p {
-	line-height: 2rem;
-	font-weight: 400;
-	letter-spacing: 2px;
-}
+
 /* 
 ====== 
 Error

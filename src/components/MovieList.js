@@ -1,7 +1,9 @@
 import React from 'react';
 import Movie from './Movie';
 
-const MovieList = ({ movies, loading }) => {
+const MovieList = ({ movies, loading }) =>
+{
+	
 	if (loading) {
 		return <h2 className="section-title">Loading...</h2>;
 	}
