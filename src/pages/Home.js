@@ -120,11 +120,15 @@ const Home = () => {
 		<main>
 			<SearchForm setSearchTerm={setSearchTerm} />
 			<MovieList loading={loading} movies={movies} />
-			<div className="button">
-				<button onClick={loadMore} className="btn btn-primary">
-					Load more
-				</button>
-			</div>
+			{!searchTerm ? (
+				<div className="button">
+					<button onClick={loadMore} className="btn btn-primary">
+						Load more
+					</button>
+				</div>
+			) : (
+				<></>
+			)}
 		</main>
 	);
 };
