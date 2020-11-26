@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Favorite = () => {
+
 	const favoriteList = JSON.parse(localStorage.getItem('favorite'));
 	const remove = (movie) => {
 		const findMovie = favoriteList.find((item) => item.id === movie.id);
@@ -14,7 +15,7 @@ const Favorite = () => {
 
 	return (
 		<section className="section movies-center">
-			{JSON.parse(localStorage.getItem('favorite')).map((item) => (
+			{favoriteList.map((item) => (
 				<article key={item.id} className="movie">
 					<div className="image-container">
 						<img
