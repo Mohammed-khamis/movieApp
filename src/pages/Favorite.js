@@ -26,18 +26,20 @@ const Favorite = () => {
 						<h3>{item.title}</h3>
 						<h4>Rating: {item.rating}</h4>
 						<p>Date: {item.date}</p>
-						<Link
-							to={`/movie/${item.id}`}
-							className="btn btn-primary btn-details"
-						>
-							details
-						</Link>
-						<button
-							className="btn btn-primary btn-details"
-							onClick={() => remove(item)}
-						>
-							Remove
-						</button>
+						<div className="button">
+							<Link
+								to={`/movie/${item.id}`}
+								className="btn btn-primary btn-details"
+							>
+								details
+							</Link>
+							<button
+								className="btn btn-primary btn-details"
+								onClick={() => remove(item)}
+							>
+								Remove from the list
+							</button>
+						</div>
 					</div>
 				</article>
 			))}
