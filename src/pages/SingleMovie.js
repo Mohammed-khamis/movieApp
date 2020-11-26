@@ -1,10 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 
+const favoriteList = JSON.parse(localStorage.getItem('favorite') || '[]');
+
 const SingleMovie = () => {
 	const { id } = useParams();
 	const [loading, setLoading] = useState(false);
 	const [movie, setMovie] = useState(null);
+
+	const addToFavorite = (movie) => {
+		const lookForMovie = favoriteList.find((item) => {
+			return item.id === movie.id;
+		});
+		if (!lookForMovie) {
+			favoriteList.push(movie);
+			localStorage.setItem('favorite', JSON.stringify(favoriteList));
+			alert('Added to favorite list');
+		} else {
+			alert('The movie is already in the favorite list');
+		}
+	};
 
 	useEffect(() => {
 		setLoading(true);
@@ -16,6 +31,7 @@ const SingleMovie = () => {
 				const data = await response.json();
 				if (data) {
 					const {
+						id,
 						original_title: title,
 						poster_path: image,
 						overview,
@@ -36,6 +52,7 @@ const SingleMovie = () => {
 					});
 
 					const newMovie = {
+						id,
 						title,
 						image,
 						overview,
@@ -66,6 +83,7 @@ const SingleMovie = () => {
 		return <h2 className="section-title">No Movie To Display</h2>;
 	} else {
 		const {
+			id,
 			title,
 			image,
 			overview,
@@ -110,7 +128,13 @@ const SingleMovie = () => {
 				<Link to="/" className="btn btn-primary">
 					Back Home
 				</Link>
-				<button className="btn btn-primary"> Add to favorite </button>
+
+				<button
+					className="btn btn-primary"
+					onClick={() => addToFavorite(movie)}
+				>
+					Add to favorite
+				</button>
 			</section>
 		);
 	}

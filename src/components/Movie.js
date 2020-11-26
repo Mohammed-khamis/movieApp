@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Movie = ({ image, title, id, overview, popularity, rating, date }) => {
+const Movie = ({ image, title, id, rating, date }) => {
 	return (
 		<article className="movie">
 			<div className="image-container">
