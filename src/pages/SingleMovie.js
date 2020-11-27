@@ -1,20 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 
-const favoriteList = JSON.parse(localStorage.getItem('favorite') || '[]');
-
 const SingleMovie = () => {
 	const { id } = useParams();
 	const [loading, setLoading] = useState(false);
 	const [movie, setMovie] = useState(null);
+	const [favoriteList, setFavoriteList] = useState([]);
 
-	const addToFavorite = (movie) => {
-		const lookForMovie = favoriteList.find((item) => {
+	const list = JSON.parse(localStorage.getItem('favorite' || '[]'));
+
+	const addToFavorite = (movie) =>
+	{
+		const lookForMovie = list.find((item) => {
 			return item.id === movie.id;
 		});
+		if (!lookForMovie) list.push(movie);
+		localStorage.setItem('favorite', JSON.stringify(list));
 		if (!lookForMovie) {
-			favoriteList.push(movie);
-			localStorage.setItem('favorite', JSON.stringify(favoriteList));
+			setFavoriteList(list);
 			alert('Added to favorite list');
 		} else {
 			alert('The movie is already in the favorite list');
