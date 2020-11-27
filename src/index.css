@@ -260,6 +260,7 @@ Movie
 .movie img {
 	border-top-left-radius: var(--mainBorderRadius);
 	border-top-right-radius: var(--mainBorderRadius);
+	height: 550px;
 }
 .movie-footer {
 	padding: 1.5rem;
@@ -268,6 +269,7 @@ Movie
 .movie-footer h4,
 .movie-footer p {
 	margin-bottom: 0.3rem;
+	height: auto;
 }
 .movie-footer h3 {
 	font-size: 2.2rem;
@@ -276,6 +278,7 @@ Movie
 	color: var(--darkGrey);
 	margin-bottom: 0.5rem;
 }
+
 /* 
 ====== 
 Form
@@ -349,4 +352,3 @@ Movie
 		padding-top: 0;
 	}
 }
-

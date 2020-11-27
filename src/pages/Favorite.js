@@ -4,17 +4,13 @@ import { Link } from 'react-router-dom';
 const Favorite = () => {
 	let [favoriteList, setFavoriteList] = useState([]);
 
-	// setFavoriteList(JSON.parse(localStorage.getItem('favorite') || '[]'));
 	favoriteList = JSON.parse(localStorage.getItem('favorite') || '[]');
-	// let favoriteList = JSON.parse(localStorage.getItem('favorite') || '[]');
 	const remove = (movie) => {
-		//setFavoriteList(JSON.parse(localStorage.getItem('favorite')));
 		const Movie = favoriteList.filter((item) => item.id !== movie.id);
 
 		if (Movie) {
 			localStorage.setItem('favorite', JSON.stringify(Movie));
 			setFavoriteList(JSON.parse(localStorage.getItem('favorite') || '[]'));
-			// favoriteList = JSON.parse(localStorage.getItem('favorite') || '[]');
 		}
 	};
 
