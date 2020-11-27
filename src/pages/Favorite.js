@@ -2,12 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Favorite = () => {
-
 	const favoriteList = JSON.parse(localStorage.getItem('favorite'));
 	const remove = (movie) => {
 		const findMovie = favoriteList.find((item) => item.id === movie.id);
+		const index = favoriteList.indexOf(findMovie);
+		const hide = document.querySelectorAll(`article.movie`)[index];
+		hide.style.display = 'none';
+		//console.log(hide);
 		if (findMovie) {
-			const index = favoriteList.indexOf(findMovie);
 			favoriteList.splice(index, 1);
 			localStorage.setItem('favorite', JSON.stringify(favoriteList));
 		}
@@ -16,7 +18,7 @@ const Favorite = () => {
 	return (
 		<section className="section movies-center">
 			{favoriteList.map((item) => (
-				<article key={item.id} className="movie">
+				<article key={item.id} className="movie" title={item.title}>
 					<div className="image-container">
 						<img
 							src={`https://image.tmdb.org/t/p/w500${item.image}`}
@@ -35,7 +37,7 @@ const Favorite = () => {
 								details
 							</Link>
 							<button
-								className="btn btn-primary btn-details"
+								className="btn btn-primary btn-details "
 								onClick={() => remove(item)}
 							>
 								Remove from the list
