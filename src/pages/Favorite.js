@@ -2,16 +2,18 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Favorite = () => {
-	const favoriteList = JSON.parse(localStorage.getItem('favorite'));
+	const favoriteList = JSON.parse(localStorage.getItem('favorite')) || [];
 	const remove = (movie) => {
 		const findMovie = favoriteList.find((item) => item.id === movie.id);
-		const index = favoriteList.indexOf(findMovie);
-		const hide = document.querySelectorAll(`article.movie`)[index];
-		hide.style.display = 'none';
+
 		//console.log(hide);
 		if (findMovie) {
+			const index = favoriteList.indexOf(findMovie);
+			console.log(index);
 			favoriteList.splice(index, 1);
 			localStorage.setItem('favorite', JSON.stringify(favoriteList));
+			const hide = document.querySelectorAll(`article.movie`);
+			hide[index].style.display = 'none';
 		}
 	};
 
