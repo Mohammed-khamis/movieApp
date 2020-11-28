@@ -8,7 +8,7 @@ const Home = () => {
 	const [movies, setMovies] = useState([]);
 	let [page, setPage] = useState(1);
 
-	const loadMore = async () => {
+	const loadMore = async (movies) => {
 		page += 1;
 		setPage(page);
 		const response = await fetch(
@@ -37,7 +37,7 @@ const Home = () => {
 					date: release_date,
 				};
 			});
-			setMovies(newMovies);
+			setMovies([...movies, ...newMovies]);
 		}
 	};
 
@@ -122,7 +122,7 @@ const Home = () => {
 			<MovieList loading={loading} movies={movies} />
 			{!searchTerm ? (
 				<div className="button">
-					<button onClick={loadMore} className="btn btn-primary">
+					<button onClick={() => loadMore(movies)} className="btn btn-primary">
 						Load more
 					</button>
 				</div>
