@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Favorite = () => {
 	let [favoriteList, setFavoriteList] = useState([]);
 
-	favoriteList = JSON.parse(localStorage.getItem('favorite'));
+	favoriteList = JSON.parse(localStorage.getItem('favorite')) || [];
 	const remove = (movie) => {
 		const Movie = favoriteList.filter((item) => item.id !== movie.id);
 
