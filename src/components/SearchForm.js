@@ -15,7 +15,6 @@ const SearchForm = ({ setSearchTerm }) => {
 	};
 	return (
 		<section className="section">
-			<h2 className="section-title">search movies</h2>
 			<form className="form search-form" onSubmit={handleSubmit}>
 				<div className="form-control">
 					<label htmlFor="name">search your favorite movie</label>

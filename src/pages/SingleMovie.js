@@ -9,8 +9,7 @@ const SingleMovie = () => {
 
 	const list = JSON.parse(localStorage.getItem('favorite')) || [];
 
-	const addToFavorite = (movie) =>
-	{
+	const addToFavorite = (movie) => {
 		const lookForMovie = list.find((item) => {
 			return item.id === movie.id;
 		});
