@@ -5,7 +5,6 @@ const SingleMovie = () => {
 	const { id } = useParams();
 	const [loading, setLoading] = useState(false);
 	const [movie, setMovie] = useState(null);
-	const [favoriteList, setFavoriteList] = useState([]);
 
 	const list = JSON.parse(localStorage.getItem('favorite')) || [];
 
@@ -13,10 +12,9 @@ const SingleMovie = () => {
 		const lookForMovie = list.find((item) => {
 			return item.id === movie.id;
 		});
-		if (!lookForMovie) list.push(movie);
-		localStorage.setItem('favorite', JSON.stringify(list));
 		if (!lookForMovie) {
-			setFavoriteList(list);
+			list.push(movie);
+			localStorage.setItem('favorite', JSON.stringify(list));
 			alert('Added to favorite list');
 		} else {
 			alert('The movie is already in the favorite list');
