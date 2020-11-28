@@ -7,7 +7,7 @@ const SingleMovie = () => {
 	const [movie, setMovie] = useState(null);
 	const [favoriteList, setFavoriteList] = useState([]);
 
-	const list = JSON.parse(localStorage.getItem('favorite' || '[]'));
+	const list = JSON.parse(localStorage.getItem('favorite')) || [];
 
 	const addToFavorite = (movie) =>
 	{
