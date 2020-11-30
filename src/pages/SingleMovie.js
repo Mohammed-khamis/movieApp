@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import ModalPopUp from './../components/ModalPopUp';
+import ModalPopUp2 from './../components/ModalPopUp2';
 
 const SingleMovie = () => {
 	const { id } = useParams();
@@ -21,6 +22,8 @@ const SingleMovie = () => {
 		if (!lookForMovie) {
 			list.push(movie);
 			localStorage.setItem('favorite', JSON.stringify(list));
+			setShow(false);
+		} else {
 			setShow(false);
 		}
 	};
@@ -130,12 +133,22 @@ const SingleMovie = () => {
 						</p>
 					</div>
 				</div>
-				<ModalPopUp
-					show={show}
-					close={handler}
-					add={addToFavorite}
-					movie={movie}
-				/>
+				{!list.find((item) => {
+					return item.id === movie.id;
+				}) ? (
+					<ModalPopUp
+						show={show}
+						close={handler}
+						add={addToFavorite}
+						movie={movie}
+					/>
+				) : (
+					<ModalPopUp2
+						show={show}
+						close={handler}
+					/>
+				)}
+
 				<Link to="/" className="btn btn-primary">
 					Back Home
 				</Link>

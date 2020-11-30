@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ModalPopUp = ({ show, close, add, movie }) => {
+const ModalPopUp = ({ show, close }) => {
 	return (
 		<div
 			className="modal-wrapper"
@@ -10,16 +10,10 @@ const ModalPopUp = ({ show, close, add, movie }) => {
 			}}
 		>
 			<div className="modal-content">
-				<h3>Are you sure to add this movie to favorite list?</h3>
+				<h3>The movie is Already in the favorite list</h3>
 				<div className="modal-button">
-					<button
-						onClick={() => add(movie)}
-						className="btn btn-primary btn-details "
-					>
-						Yes
-					</button>
 					<button onClick={close} className="btn btn-primary btn-details ">
-						No
+						OK
 					</button>
 				</div>
 			</div>
