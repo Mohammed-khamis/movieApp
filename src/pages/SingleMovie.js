@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import ModalPopUp from './../components/ModalPopUp';
 
 const SingleMovie = () => {
 	const { id } = useParams();
 	const [loading, setLoading] = useState(false);
 	const [movie, setMovie] = useState(null);
+	const [show, setShow] = useState(false);
+
+	const handler = () => {
+		setShow(false);
+	};
 
 	const list = JSON.parse(localStorage.getItem('favorite')) || [];
 
@@ -15,9 +21,7 @@ const SingleMovie = () => {
 		if (!lookForMovie) {
 			list.push(movie);
 			localStorage.setItem('favorite', JSON.stringify(list));
-			alert('Added to favorite list');
-		} else {
-			alert('The movie is already in the favorite list');
+			setShow(false);
 		}
 	};
 
@@ -97,6 +101,7 @@ const SingleMovie = () => {
 		} = movie;
 		return (
 			<section className="section movie-section">
+				{show ? <div onClick={handler} className="modal-drop"></div> : null}
 				<h2 className="section-title">{title}</h2>
 				<div className="film">
 					<img src={`https://image.tmdb.org/t/p/w500${image}`} alt={title} />
@@ -125,13 +130,19 @@ const SingleMovie = () => {
 						</p>
 					</div>
 				</div>
+				<ModalPopUp
+					show={show}
+					close={handler}
+					add={addToFavorite}
+					movie={movie}
+				/>
 				<Link to="/" className="btn btn-primary">
 					Back Home
 				</Link>
-
 				<button
 					className="btn btn-primary"
-					onClick={() => addToFavorite(movie)}
+					onClick={() => setShow(true)}
+					// onClick={() => addToFavorite(movie)}
 				>
 					Add to favorite
 				</button>
