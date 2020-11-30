@@ -133,21 +133,6 @@ const SingleMovie = () => {
 						</p>
 					</div>
 				</div>
-				{!list.find((item) => {
-					return item.id === movie.id;
-				}) ? (
-					<ModalPopUp
-						show={show}
-						close={handler}
-						add={addToFavorite}
-						movie={movie}
-					/>
-				) : (
-					<ModalPopUp2
-						show={show}
-						close={handler}
-					/>
-				)}
 
 				<Link to="/" className="btn btn-primary">
 					Back Home
@@ -159,6 +144,18 @@ const SingleMovie = () => {
 				>
 					Add to favorite
 				</button>
+				{!list.find((item) => {
+					return item.id === movie.id;
+				}) ? (
+					<ModalPopUp
+						show={show}
+						close={handler}
+						add={addToFavorite}
+						movie={movie}
+					/>
+				) : (
+					<ModalPopUp2 show={show} close={handler} />
+				)}
 			</section>
 		);
 	}
