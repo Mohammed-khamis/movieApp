@@ -14,7 +14,6 @@ const MovieList = ({ movies, loading }) =>
 	}
 	return (
 		<section className="section">
-			<h2 className="section-title">Movies</h2>
 			<div className="movies-center">
 				{movies.map((movie) => {
 					return <Movie key={movie.id} {...movie} />;

@@ -5,6 +5,7 @@ const Favorite = () => {
 	let [favoriteList, setFavoriteList] = useState([]);
 
 	favoriteList = JSON.parse(localStorage.getItem('favorite')) || [];
+
 	const remove = (movie) => {
 		const Movie = favoriteList.filter((item) => item.id !== movie.id);
 
@@ -29,17 +30,17 @@ const Favorite = () => {
 						<h4>Rating: {item.rating}</h4>
 						<p>Date: {item.date}</p>
 						<div className="button">
-							<Link
+							{/* <Link
 								to={`/movie/${item.id}`}
 								className="btn btn-primary btn-details"
 							>
 								details
-							</Link>
+							</Link> */}
 							<button
 								className="btn btn-primary btn-details "
 								onClick={() => remove(item)}
 							>
-								Remove from the list
+								Remove
 							</button>
 						</div>
 					</div>

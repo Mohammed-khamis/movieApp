@@ -234,7 +234,7 @@ Movies List
 	margin: 0 auto;
 	max-width: var(--fullWidth);
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(370.8px, 1fr));
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 	column-gap: 1.8rem;
 	row-gap: 1.8rem;
 	/* align-items: start; */
@@ -251,7 +251,9 @@ Movie
 	box-shadow: var(--lightShadow);
 	transition: var(--mainTransition);
 	display: grid;
-	grid-template-rows: auto 1fr;
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	column-gap: 1.8rem;
+	row-gap: 1.8rem;
 	border-radius: var(--mainBorderRadius);
 }
 .movie:hover {
@@ -260,10 +262,14 @@ Movie
 .movie img {
 	border-top-left-radius: var(--mainBorderRadius);
 	border-top-right-radius: var(--mainBorderRadius);
-	height: 500px;
+	width: 100%;
 }
 .movie-footer {
 	padding: 1.5rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 }
 .movie-footer h3,
 .movie-footer h4,
@@ -271,11 +277,15 @@ Movie
 	margin-bottom: 0.3rem;
 }
 .movie-footer h3 {
-	font-size: 2.2rem;
+	font-size: 1.2rem;
 }
 .movie-footer p {
 	color: var(--darkGrey);
 	margin-bottom: 0.5rem;
+}
+
+.movie-footer .button {
+	margin-right: 20px;
 }
 
 /* 
